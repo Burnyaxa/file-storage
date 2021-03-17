@@ -9,6 +9,7 @@ namespace DAL.Entities
         public int Views { get; set; }
         public int Downloads { get; set; }
 
+        public int FileId { get; set; }
         public File File { get; set; }
     }
 }
