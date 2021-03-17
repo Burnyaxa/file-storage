@@ -12,7 +12,7 @@ namespace DAL.Interfaces
         public void Delete(TEntity entity);
         public Task<TEntity> GetByIdAsync(int id);
         public Task<TEntity> GetByIdWithDetailsAsync(int id);
-        public Task<TEntity> GetAllAsync();
-        public Task<TEntity> GetAllWithDetailsAsync();
+        public Task<IEnumerable<TEntity>> GetAllAsync();
+        public Task<IEnumerable<TEntity>> GetAllWithDetailsAsync();
     }
 }
