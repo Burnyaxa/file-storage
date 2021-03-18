@@ -10,7 +10,7 @@ namespace BLL.Exceptions
     {
         public override string Message { get; }
 
-        public BadPasswordException(IEnumerable<IdentityError> errors) : base()
+        public BadPasswordException(IEnumerable<IdentityError> errors)
         {
             Message = errors.Aggregate("", (msg, next) => msg + $"{next.Description} ");
         }
