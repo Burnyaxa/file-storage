@@ -37,6 +37,10 @@ namespace DAL.Data
             modelBuilder.Entity<File>()
                 .Property(x => x.Uploaded)
                 .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<File>()
+                .Property(x => x.LastUpdated)
+                .HasDefaultValueSql("GETDATE()");
         }
     }
 }
