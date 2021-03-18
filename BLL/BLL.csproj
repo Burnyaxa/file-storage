@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.4" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
 
 </Project>
