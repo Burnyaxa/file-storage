@@ -8,7 +8,7 @@ namespace BLL.Exceptions
     {
         public override string Message { get; }
 
-        public CredentialsException() : base()
+        public CredentialsException()
         {
             Message = "Wrong credentials were entered";
         }
