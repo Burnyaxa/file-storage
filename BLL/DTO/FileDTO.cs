@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BLL.DTO
 {
-    public class FileDTO
+    public class FileDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

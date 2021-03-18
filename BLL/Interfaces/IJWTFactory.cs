@@ -8,7 +8,7 @@ using DAL.Entities;
 
 namespace BLL.Interfaces
 {
-    public interface IJWTFactory
+    public interface IJwtFactory
     {
         JwtSecurityToken DecodeToken(string token);
         string GenerateEncodedToken(string userName, ClaimsIdentity identity);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BLL.DTO
 {
-    public class PasswordDTO
+    public class PasswordDto
     {
         [Required]
         public string OldPassword { get; set; }
