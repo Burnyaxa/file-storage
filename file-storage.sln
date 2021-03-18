@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{5C0AE378-07FC-452A-A629-E3E5C5E21283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{5C0AE378-07FC-452A-A629-E3E5C5E21283}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{EF47D883-32EF-4505-83AE-E3F3DEBDDB12}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5C0AE378-07FC-452A-A629-E3E5C5E21283} = {5C0AE378-07FC-452A-A629-E3E5C5E21283}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{5C0AE378-07FC-452A-A629-E3E5C5E21283}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C0AE378-07FC-452A-A629-E3E5C5E21283}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C0AE378-07FC-452A-A629-E3E5C5E21283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF47D883-32EF-4505-83AE-E3F3DEBDDB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF47D883-32EF-4505-83AE-E3F3DEBDDB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF47D883-32EF-4505-83AE-E3F3DEBDDB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF47D883-32EF-4505-83AE-E3F3DEBDDB12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
