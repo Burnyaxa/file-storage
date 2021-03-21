@@ -9,9 +9,9 @@ namespace BLL.Interfaces
     public interface IFileService
     {
         Task<FileDto> CreateFileAsync(FileDto fileDto, string token);
-        Task<IEnumerable<FileDto>> GetAllFilesAsync();
+        Task<IEnumerable<FileDto>> GetAllFilesAsync(string name, string token);
         Task<FileDto> GetFileByIdAsync(int id);
         Task<FileDto> UpdateFileAsync(int id, FileDto fileDto, string token);
-        Task<IEnumerable<FileDto>> GetAllFilesByUserIdAsync(int id);
+        Task<IEnumerable<FileDto>> GetAllFilesByUserIdAsync(int id, string name);
     }
 }
