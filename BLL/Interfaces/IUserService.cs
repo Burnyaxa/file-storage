@@ -8,17 +8,17 @@ namespace BLL.Interfaces
 {
     public interface IUserService
     {
-        Task<UserDto> RegisterRegularUser(UserDto userDto);
-        Task<UserDto> RegisterAdministrator(UserDto userDto);
-        Task<IEnumerable<UserDto>> GetAllRegularUsers();
-        Task<IEnumerable<UserDto>> GetAllModerators();
-        Task<IEnumerable<UserDto>> GetAllUsers();
-        Task<UserDto> GetUserById(int id, string token);
-        Task<PublicUserInfoDto> GetPublicUserInfoById(int id);
-        Task<bool> DeleteUser(int id, string token);
-        Task<bool> UpdateUser(int id, UserDto user, string token);
-        Task<bool> ChangePassword(int id, PasswordDto password, string token);
-        Task PromoteUser(int id, string token);
-        Task DemoteUser(int id, string token);
+        Task<UserDto> RegisterRegularUserAsync(UserDto userDto);
+        Task<UserDto> RegisterAdministratorAsync(UserDto userDto);
+        Task<IEnumerable<UserDto>> GetAllRegularUsersAsync();
+        Task<IEnumerable<UserDto>> GetAllModeratorsAsync();
+        Task<IEnumerable<UserDto>> GetAllUsersAsync();
+        Task<UserDto> GetUserByIdAsync(int id, string token);
+        Task<PublicUserInfoDto> GetPublicUserInfoByIdAsync(int id);
+        Task<bool> DeleteUserAsync(int id, string token);
+        Task<bool> UpdateUserAsync(int id, UserDto user, string token);
+        Task<bool> ChangePasswordAsync(int id, PasswordDto password, string token);
+        Task PromoteUserAsync(int id, string token);
+        Task DemoteUserAsync(int id, string token);
     }
 }
