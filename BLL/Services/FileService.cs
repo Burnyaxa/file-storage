@@ -123,6 +123,13 @@ namespace BLL.Services
 
         public async Task<IEnumerable<FileDto>> GetAllFilesByUserIdAsync(int id, string name)
         {
+            var user = await _manager.FindByIdAsync(id.ToString());
+
+            if (user == null)
+            {
+                throw new EntityNotFoundException(nameof(user), id);
+            }
+
             var files = await _unitOfWork.FileRepository
                 .GetAllWithDetails(IncludeProperties)
                 .Where(f => f.UserId == id)
