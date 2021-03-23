@@ -24,9 +24,9 @@ namespace BLL.Services
             _s3Client = s3Client;
         }
 
-        public async Task<string> UploadFileAsync(IFormFile file, string bucketName)
+        public async Task<string> UploadFileAsync(IFormFile file, string bucketName, string folder)
         {
-            string key = file.FileName + DateTime.Now;
+            string key = folder + "/" + DateTime.Now + "--" + file.FileName;
             var fileTransferUtility = new TransferUtility(_s3Client);
             var uploadRequest = new TransferUtilityUploadRequest()
             {

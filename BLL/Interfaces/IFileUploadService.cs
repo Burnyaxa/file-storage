@@ -9,6 +9,6 @@ namespace BLL.Interfaces
 {
     public interface IFileUploadService
     {
-        Task<string> UploadFileAsync(IFormFile file, string bucketName);
+        Task<string> UploadFileAsync(IFormFile file, string bucketName, string folder);
     }
 }
