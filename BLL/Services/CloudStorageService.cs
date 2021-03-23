@@ -8,29 +8,30 @@ using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
+using BLL.DTO;
 using BLL.Extensions;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Http;
 
 namespace BLL.Services
 {
-    public class FileUploadService : ICloudStorageService
+    public class CloudStorageService : ICloudStorageService
     {
         private readonly RegionEndpoint _bucketRegion = RegionEndpoint.EUWest2;
         private readonly IAmazonS3 _s3Client;
 
-        public FileUploadService(IAmazonS3 s3Client)
+        public CloudStorageService(IAmazonS3 s3Client)
         {
             _s3Client = s3Client;
         }
 
-        public async Task<string> UploadFileAsync(IFormFile file, string bucketName, string folder)
+        public async Task<string> UploadFileAsync(FileDto file, string bucketName)
         {
-            string key = folder + "/" + DateTime.Now + "--" + file.FileName;
+            string key = file.CreatorId + "/" + DateTime.Now + "--" + file.Data.Name;
             var fileTransferUtility = new TransferUtility(_s3Client);
             var uploadRequest = new TransferUtilityUploadRequest()
             {
-                InputStream = file.OpenReadStream(),
+                InputStream = file.Data.OpenReadStream(),
                 Key = key,
                 BucketName = bucketName,
                 CannedACL = S3CannedACL.PublicRead
