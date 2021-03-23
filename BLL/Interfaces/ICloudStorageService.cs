@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using BLL.DTO;
@@ -12,5 +13,6 @@ namespace BLL.Interfaces
     {
         Task<string> UploadFileAsync(FileDto file, string bucketName);
         Task DeleteFileAsync(string bucketName, string link);
+        string DownloadFile(string bucketName, string link);
     }
 }

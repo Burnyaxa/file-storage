@@ -18,12 +18,12 @@ namespace BLL.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task IncreaseViews(FileDto fileDto)
+        public async Task IncreaseViewsAsync(int id)
         {
-            var file = await _unitOfWork.FileRepository.GetByIdWithDetailsAsync(fileDto.Id);
+            var file = await _unitOfWork.FileRepository.GetByIdWithDetailsAsync(id);
             if (file == null)
             {
-                throw new EntityNotFoundException(nameof(file), fileDto.Id);
+                throw new EntityNotFoundException(nameof(file), id);
             }
 
             file.Statistics.Views++;
@@ -31,12 +31,12 @@ namespace BLL.Services
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task IncreaseDownloads(FileDto fileDto)
+        public async Task IncreaseDownloadsAsync(int id)
         {
-            var file = await _unitOfWork.FileRepository.GetByIdWithDetailsAsync(fileDto.Id);
+            var file = await _unitOfWork.FileRepository.GetByIdWithDetailsAsync(id);
             if (file == null)
             {
-                throw new EntityNotFoundException(nameof(file), fileDto.Id);
+                throw new EntityNotFoundException(nameof(file), id);
             }
 
             file.Statistics.Downloads++;

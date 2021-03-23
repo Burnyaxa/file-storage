@@ -34,6 +34,7 @@ namespace BLL.Services
                 InputStream = file.Data.OpenReadStream(),
                 Key = key,
                 BucketName = bucketName,
+                AutoCloseStream = true,
                 CannedACL = S3CannedACL.PublicRead
             };
 
@@ -46,6 +47,20 @@ namespace BLL.Services
         {
             string key = _s3Client.GetKey(bucketName, link);
             await _s3Client.DeleteObjectAsync(bucketName, key);
+        }
+
+        public string DownloadFile(string bucketName, string link)
+        {
+            string key = _s3Client.GetKey(bucketName, link);
+
+            var request = new GetPreSignedUrlRequest()
+            {
+                BucketName = bucketName,
+                Key = key,
+                Expires = DateTime.Now.AddDays(1)
+            };
+
+            return _s3Client.GetPreSignedURL(request);
         }
     }
 }

@@ -12,13 +12,15 @@ namespace BLL.Services
         private readonly IFileService _fileService;
         private readonly IShortLinkService _shortLinkService;
         private readonly ICloudStorageService _cloudStorageService;
+        private readonly IStatisticsService _statisticsService;
 
         public FileManagerService(IFileService fileService, IShortLinkService shortLinkService,
-            ICloudStorageService cloudStorageService)
+            ICloudStorageService cloudStorageService, IStatisticsService statisticsService)
         {
             _fileService = fileService;
             _shortLinkService = shortLinkService;
             _cloudStorageService = cloudStorageService;
+            _statisticsService = statisticsService;
         }
 
         public async Task<FileDto> CreateFileAsync(FileDto fileDto, string token, string bucket)
@@ -39,6 +41,7 @@ namespace BLL.Services
 
         public async Task<FileDto> GetFileByIdAsync(int id)
         {
+            await _statisticsService.IncreaseViewsAsync(id);
             return await _fileService.GetFileByIdAsync(id);
         }
 
@@ -57,6 +60,12 @@ namespace BLL.Services
             var file = await _fileService.GetFileByIdAsync(id);
             await _cloudStorageService.DeleteFileAsync(bucket, file.Url);
             await _fileService.DeleteFileAsync(id, token);
+        }
+
+        public async Task<string> DownloadFileAsync(string bucket, int id)
+        {
+            var file = await _fileService.GetFileByIdAsync(id);
+            return _cloudStorageService.DownloadFile(bucket, file.Url);
         }
     }
 }

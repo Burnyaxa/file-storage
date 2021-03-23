@@ -8,7 +8,7 @@ namespace BLL.Interfaces
 {
     public interface IStatisticsService
     {
-        Task IncreaseViews(FileDto fileDto);
-        Task IncreaseDownloads(FileDto fileDto);
+        Task IncreaseViewsAsync(int id);
+        Task IncreaseDownloads(int id);
     }
 }

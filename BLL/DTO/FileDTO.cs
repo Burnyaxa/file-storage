@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace BLL.DTO
 {
@@ -13,7 +14,9 @@ namespace BLL.DTO
         public string ShortUrl { get; set; }
         public DateTime Uploaded { get; set; }
         public DateTime LastUpdated { get; set; }
-        
+
+        public IFormFile Data { get; set; }
+
         public int CreatorId { get; set; }
         public string CreatorUserName { get; set; }
 

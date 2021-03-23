@@ -14,5 +14,6 @@ namespace BLL.Interfaces
         Task<FileDto> UpdateFileAsync(int id, FileDto fileDto, string token);
         Task<IEnumerable<FileDto>> GetAllFilesByUserIdAsync(int id, string name);
         Task DeleteFile(int id, string bucket, string token);
+        Task<string> DownloadFileAsync(string bucket, string id);
     }
 }
