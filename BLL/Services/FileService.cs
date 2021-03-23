@@ -148,6 +148,23 @@ namespace BLL.Services
             return _mapper.Map<IEnumerable<File>, IEnumerable<FileDto>>(files);
         }
 
+        public async Task DeleteFileAsync(int id, string token)
+        {
+            var file = await _unitOfWork.FileRepository.GetByIdAsync(id);
+            if (file == null)
+            {
+                throw new EntityNotFoundException(nameof(file), id);
+            }
+
+            if (!CheckEditRights(token, id))
+            {
+                throw new NotEnoughRightsException();
+            }
+
+            _unitOfWork.FileRepository.Delete(file);
+            await _unitOfWork.SaveAsync();
+        }
+
         private bool CheckEditRights(string token, int id)
         {
             var claimsId = _factory.GetUserIdClaim(token);
