@@ -67,5 +67,11 @@ namespace BLL.Services
             var file = await _fileService.GetFileByIdAsync(id);
             return _cloudStorageService.DownloadFile(bucket, file.Url);
         }
+
+        public async Task<string> DownloadFileByShortLinkAsync(string bucket, string shortLink)
+        {
+            var file = await _fileService.GetFileByShortLinkAsync(shortLink);
+            return _cloudStorageService.DownloadFile(bucket, file.Url);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using BLL.DTO;
@@ -14,6 +15,7 @@ namespace BLL.Interfaces
         Task<FileDto> UpdateFileAsync(int id, FileDto fileDto, string token);
         Task<IEnumerable<FileDto>> GetAllFilesByUserIdAsync(int id, string name);
         Task DeleteFile(int id, string bucket, string token);
-        Task<string> DownloadFileAsync(string bucket, string id);
+        Task<string> DownloadFileAsync(string bucket, int id);
+        Task<string> DownloadFileByShortLinkAsync(string bucket, string shortLink);
     }
 }

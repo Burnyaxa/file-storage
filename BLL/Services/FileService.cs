@@ -89,6 +89,26 @@ namespace BLL.Services
             return _mapper.Map<File, FileDto>(file);
         }
 
+        public async Task<FileDto> GetFileByShortLinkAsync(string shortLink)
+        {
+            var file = await _unitOfWork.FileRepository
+                .GetAllWithDetails()
+                .Where(f => f.ShortUrl == shortLink)
+                .FirstOrDefaultAsync();
+
+            if (file == null)
+            {
+                throw new FileNotFoundException(shortLink);
+            }
+
+            if (!file.IsShared)
+            {
+                throw new NotEnoughRightsException();
+            }
+
+            return _mapper.Map<File, FileDto>(file);
+        }
+
         public async Task<FileDto> UpdateFileAsync(int id, FileDto fileDto, string token)
         {
             var file = await _unitOfWork.FileRepository
