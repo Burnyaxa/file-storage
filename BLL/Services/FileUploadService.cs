@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace BLL.Services
 {
-    public class FileUploadService : IFileUploadService
+    public class FileUploadService : ICloudStorageService
     {
         private readonly RegionEndpoint _bucketRegion = RegionEndpoint.EUWest2;
         private readonly IAmazonS3 _s3Client;
@@ -39,6 +39,12 @@ namespace BLL.Services
             await fileTransferUtility.UploadAsync(uploadRequest);
 
             return _s3Client.GetResourceUrl(bucketName, key);
+        }
+
+        public async Task DeleteFileAsync(string bucketName, string link)
+        {
+            string key = _s3Client.GetKey(bucketName, link);
+            await _s3Client.DeleteObjectAsync(bucketName, key);
         }
     }
 }

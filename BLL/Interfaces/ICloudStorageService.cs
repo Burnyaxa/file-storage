@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace BLL.Interfaces
 {
-    public interface IFileUploadService
+    public interface ICloudStorageService
     {
         Task<string> UploadFileAsync(IFormFile file, string bucketName, string folder);
+        Task DeleteFileAsync(string bucketName, string link);
     }
 }
